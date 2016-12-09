@@ -1,0 +1,38 @@
+<h1>New Wing Order</h1>
+
+<%= form_for @wing_order do |w| %>
+
+  <div class="row">
+    <%= w.label :customer_name, "Full Name"  %>
+    <%= w.text_area :customer_name %>
+  </div>
+
+  <div class="row">
+    <%= w.label :city, "City"  %>
+    <%= w.text_area :city %>
+  </div>
+
+  <div class="row">
+    <%= w.label :state, "State" %>
+    <%= w.select(:state, options_for_select(@state_collection)) %>
+  </div>
+
+  <div class="row">
+    <%= w.label :quantity, "Quantity" %><br />
+    <%= w.collection_radio_buttons(:quantity, @quantity_collection, :first, :last) %>
+  </div>
+
+  <div class="row">
+    <%= w.check_box :ranch_dressing %>
+    <%= w.label :wing_order_ranch_dressing, "Add Ranch Dressing" %>
+  </div>
+
+  <div class="row">
+    <%= w.label :flavor, "Flavors" %>
+    <%= w.collection_check_boxes(:flavor_ids, @flavor_collection, :id, :name, include_hidden: false) %>
+
+  <div class="row">
+    <%= w.submit %>
+  </div>
+  
+<% end %>
